@@ -101,7 +101,7 @@ struct PostsView: View {
             NavigationLink {
                 //PostDetailView(post: post)          // TODO
             } label: {
-                PostPlaceholder(post: post)
+                    PostPlaceholder(post: post)
             }
         }
     }
