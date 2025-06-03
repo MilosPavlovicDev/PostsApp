@@ -12,6 +12,7 @@
 		0B2665F12DEF5619000AE707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2665EA2DEF5619000AE707 /* Assets.xcassets */; };
 		0B2665F52DEF5C4D000AE707 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */; };
 		0B2665F82DEF5DDC000AE707 /* PostPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */; };
+		0B2666032DEF6C48000AE707 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2666022DEF6C48000AE707 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +22,28 @@
 		0B2665EB2DEF5619000AE707 /* PostsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAppApp.swift; sourceTree = "<group>"; };
 		0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPlaceholder.swift; sourceTree = "<group>"; };
+		0B2666022DEF6C48000AE707 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0B2665F62DEF5CAE000AE707 /* MainViews */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MainViews;
+			sourceTree = "<group>";
+		};
+		0B2665FD2DEF6809000AE707 /* InternetService */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = InternetService;
+			sourceTree = "<group>";
+		};
+		0B2665FE2DEF6870000AE707 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0B2666042DEF6C65000AE707 /* ViewModel */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -64,6 +81,8 @@
 				0B2665E82DEF5619000AE707 /* LoadingView.swift */,
 				0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */,
 				0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */,
+				0B2666022DEF6C48000AE707 /* APIService.swift */,
+				0B2665FD2DEF6809000AE707 /* InternetService */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -73,6 +92,8 @@
 			children = (
 				0B2665EB2DEF5619000AE707 /* PostsAppApp.swift */,
 				0B2665E92DEF5619000AE707 /* Utilities */,
+				0B2666042DEF6C65000AE707 /* ViewModel */,
+				0B2665FE2DEF6870000AE707 /* Models */,
 				0B2665F62DEF5CAE000AE707 /* MainViews */,
 				0B2665EA2DEF5619000AE707 /* Assets.xcassets */,
 			);
@@ -96,6 +117,9 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0B2665F62DEF5CAE000AE707 /* MainViews */,
+				0B2665FD2DEF6809000AE707 /* InternetService */,
+				0B2665FE2DEF6870000AE707 /* Models */,
+				0B2666042DEF6C65000AE707 /* ViewModel */,
 			);
 			name = PostsApp;
 			packageProductDependencies = (
@@ -157,6 +181,7 @@
 				0B2665F52DEF5C4D000AE707 /* SkeletonView.swift in Sources */,
 				0B2665EE2DEF5619000AE707 /* LoadingView.swift in Sources */,
 				0B2665EF2DEF5619000AE707 /* PostsAppApp.swift in Sources */,
+				0B2666032DEF6C48000AE707 /* APIService.swift in Sources */,
 				0B2665F82DEF5DDC000AE707 /* PostPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +325,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +358,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

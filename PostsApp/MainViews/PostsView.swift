@@ -10,18 +10,19 @@ import SwiftUI
 struct PostsView: View {
     
     @State private var openCreatePostView = false
+    @StateObject private var vm = ViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 16) {
                     postList
                 }
                 .padding(.top, 20)
                 .padding(.horizontal)
-                .padding(.bottom, 100) // Extra space so content doesn’t go under the button
+                .padding(.bottom, 100)
             }
-            .overlay(createPostButton, alignment: .bottom) // 👈 Overlay directly on ScrollView
+            .overlay(createPostButton, alignment: .bottom)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("🧑🏻‍💻 Hello dev's")
@@ -44,6 +45,7 @@ struct PostsView: View {
                     }
                 }
             }
+            .task { await vm.loadPosts() }
         }
         .fullScreenCover(isPresented: $openCreatePostView) {
             CreatePostView()
@@ -67,9 +69,40 @@ struct PostsView: View {
         }
     }
     
+    @ViewBuilder
     private var postList: some View {
-        ForEach(0..<10, id: \.self) { _ in
-            PostPlaceholder()
+        if vm.isLoading {
+            skeletonRows
+        } else if let message = vm.error {
+            errorView(message)
+        } else {
+            postRows
+        }
+    }
+    
+    private var skeletonRows: some View {
+        ForEach(0..<8, id: \.self) { _ in
+            PostPlaceholder(post: nil)
+        }
+    }
+    
+    private func errorView(_ message: String) -> some View {
+        VStack(spacing: 12) {
+            Text("Failed to load posts 🥲")
+            Text(message).font(.caption).foregroundColor(.secondary)
+            Button("Retry") { Task { await vm.loadPosts() } }
+        }
+        .frame(maxWidth: .infinity, minHeight: 300)
+    }
+    
+    
+    private var postRows: some View {
+        ForEach(vm.posts) { post in
+            NavigationLink {
+                //PostDetailView(post: post)          // TODO
+            } label: {
+                PostPlaceholder(post: post)
+            }
         }
     }
 }

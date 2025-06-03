@@ -14,11 +14,8 @@ struct LoadingView: View {
 
     var body: some View {
         ZStack {
-            // Background Blur
-            VisualEffectBlur(blurStyle: .systemUltraThinMaterialDark)
+            VisualEffectBlur(blurStyle: .systemMaterialLight)
                 .ignoresSafeArea()
-
-            // Logo with animation
             VStack {
                 Image("smglogo")
                     .resizable()
