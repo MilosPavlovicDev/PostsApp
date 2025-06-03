@@ -6,14 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0B2665EE2DEF5619000AE707 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665E82DEF5619000AE707 /* LoadingView.swift */; };
+		0B2665EF2DEF5619000AE707 /* PostsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665EB2DEF5619000AE707 /* PostsAppApp.swift */; };
+		0B2665F12DEF5619000AE707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2665EA2DEF5619000AE707 /* Assets.xcassets */; };
+		0B2665F52DEF5C4D000AE707 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */; };
+		0B2665F82DEF5DDC000AE707 /* PostPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0B2665D12DEF4B54000AE707 /* PostsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B2665E82DEF5619000AE707 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		0B2665EA2DEF5619000AE707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B2665EB2DEF5619000AE707 /* PostsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAppApp.swift; sourceTree = "<group>"; };
+		0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
+		0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPlaceholder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0B2665D32DEF4B54000AE707 /* PostsApp */ = {
+		0B2665F62DEF5CAE000AE707 /* MainViews */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PostsApp;
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +45,7 @@
 		0B2665C82DEF4B54000AE707 = {
 			isa = PBXGroup;
 			children = (
-				0B2665D32DEF4B54000AE707 /* PostsApp */,
+				0B2665ED2DEF5619000AE707 /* PostsApp */,
 				0B2665D22DEF4B54000AE707 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +56,27 @@
 				0B2665D12DEF4B54000AE707 /* PostsApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0B2665E92DEF5619000AE707 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0B2665E82DEF5619000AE707 /* LoadingView.swift */,
+				0B2665F42DEF5C4D000AE707 /* SkeletonView.swift */,
+				0B2665F72DEF5DDB000AE707 /* PostPlaceholder.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0B2665ED2DEF5619000AE707 /* PostsApp */ = {
+			isa = PBXGroup;
+			children = (
+				0B2665EB2DEF5619000AE707 /* PostsAppApp.swift */,
+				0B2665E92DEF5619000AE707 /* Utilities */,
+				0B2665F62DEF5CAE000AE707 /* MainViews */,
+				0B2665EA2DEF5619000AE707 /* Assets.xcassets */,
+			);
+			path = PostsApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,7 +95,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0B2665D32DEF4B54000AE707 /* PostsApp */,
+				0B2665F62DEF5CAE000AE707 /* MainViews */,
 			);
 			name = PostsApp;
 			packageProductDependencies = (
@@ -109,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2665F12DEF5619000AE707 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2665F52DEF5C4D000AE707 /* SkeletonView.swift in Sources */,
+				0B2665EE2DEF5619000AE707 /* LoadingView.swift in Sources */,
+				0B2665EF2DEF5619000AE707 /* PostsAppApp.swift in Sources */,
+				0B2665F82DEF5DDC000AE707 /* PostPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +298,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -268,9 +307,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.MilosPavlovic.PostsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -287,8 +330,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,9 +339,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.MilosPavlovic.PostsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
