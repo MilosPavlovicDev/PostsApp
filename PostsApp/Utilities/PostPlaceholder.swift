@@ -30,7 +30,7 @@ struct PostPlaceholder: View {
                             AsyncImage(url: thumbURL) { phase in
                                 switch phase {
                                 case .success(let img): img.resizable()
-                                default: Color.gray.opacity(0.3)
+                                default: SkeletonView(.rect(corner: 8))
                                 }
                             }
                         }

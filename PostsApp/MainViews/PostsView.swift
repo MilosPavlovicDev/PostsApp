@@ -45,7 +45,7 @@ struct PostsView: View {
                     }
                 }
             }
-            .task { await vm.loadPosts() }
+            .task { if vm.posts.isEmpty { await vm.loadPosts() } }
         }
         .fullScreenCover(isPresented: $openCreatePostView) {
             CreatePostView()
@@ -99,7 +99,7 @@ struct PostsView: View {
     private var postRows: some View {
         ForEach(vm.posts) { post in
             NavigationLink {
-                //PostDetailView(post: post)          // TODO
+                DetailPostView(post: post)          // TODO
             } label: {
                     PostPlaceholder(post: post)
             }
