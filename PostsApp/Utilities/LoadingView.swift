@@ -11,11 +11,12 @@ import UIKit
 struct LoadingView: View {
     @Binding var isLoading: Bool
     @State private var animate = false
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         ZStack {
-            VisualEffectBlur(blurStyle: .systemMaterialLight)
-                .ignoresSafeArea()
+            Color(colorScheme == .light ? .white : .black)
+                            .ignoresSafeArea()
             VStack {
                 Image("smglogo")
                     .resizable()

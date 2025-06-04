@@ -29,23 +29,21 @@ struct CommentPlaceholder: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top, spacing: 12) {
                 
-                // ---------- Avatar / Skeleton ----------
                 Group {
                     if isSkeleton {
                         SkeletonView(SkeletonShape.circle)
                     } else {
                         Circle()
-                            .fill(Color.blue.opacity(0.15))
+                            .fill(Color("SmgColor").opacity(0.15))
                             .overlay(
                                 Text(initials)
                                     .font(.caption.bold())
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color("SmgColor"))
                             )
                     }
                 }
                 .frame(width: 34, height: 34)
                 
-                // ---------- Texts / Skeletons ----------
                 VStack(alignment: .leading, spacing: 4) {
                     if isSkeleton {
                         SkeletonView(.rect(corner: 4))
@@ -81,7 +79,7 @@ struct CommentPlaceholder: View {
 
 #Preview {
     VStack {
-        CommentPlaceholder(comment: nil)   // skeleton
+        CommentPlaceholder(comment: nil)
         CommentPlaceholder(comment: Comment(
             id: 1,
             postId: 1,

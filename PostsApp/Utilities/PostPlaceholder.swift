@@ -49,6 +49,7 @@ struct PostPlaceholder: View {
                                 .frame(width: 150, height: 10)
                         } else {
                             Text(post!.title.capitalized)
+                                .foregroundStyle(Color("TitleColor"))
                                 .font(.headline)
                                 .lineLimit(2)
                                 .multilineTextAlignment(.leading)

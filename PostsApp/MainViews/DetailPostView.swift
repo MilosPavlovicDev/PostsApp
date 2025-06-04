@@ -13,7 +13,6 @@ struct DetailPostView: View {
     private var isSkeleton: Bool { post == nil }
     @StateObject var vm: ViewModel
     
-    // Hero image URL ­– deterministic per-ID
     private var thumbURL: URL? {
         let id = post.id
         return URL(string: "https://picsum.photos/seed/\(id)/800/450")
@@ -44,34 +43,39 @@ struct DetailPostView: View {
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     
-                    // ---------- Title ----------
                     Text(post.title.capitalized)
                         .font(.title2).bold()
                     
-                    // ---------- Body ----------
                     Text(post.body)
                         .font(.body)
                         .foregroundColor(.secondary)
                     
-                    // ---------- Comments ----------
                     Text("Comments")
-                                        .font(.title3).bold()
-                                    
-                                    Group {
-                                        if vm.isLoadingComments {
-                                            ForEach(0..<3, id: \.self) { _ in
-                                                CommentPlaceholder(comment: nil)
-                                            }
-                                        } else if let err = vm.commentsError {
-                                            Text(err)
-                                                .foregroundColor(.red)
-                                                .font(.footnote)
-                                        } else {
-                                            ForEach(vm.comments) { comment in
-                                                CommentPlaceholder(comment: comment)
-                                            }
-                                        }
-                                    }
+                        .font(.title2)
+                        .bold()
+
+                    Group {
+                        if vm.isLoadingComments {
+                            ForEach(0..<3, id: \.self) { _ in
+                                CommentPlaceholder(comment: nil)
+                            }
+                        } else if let err = vm.commentsError {
+                            Text(err)
+                                .foregroundColor(.red)
+                                .font(.footnote)
+                        } else if vm.comments.isEmpty {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                Text("No comments for this post 🥲")
+                                    .font(.caption).foregroundColor(.secondary)
+                                Spacer()
+                            }
+                        } else {
+                            ForEach(vm.comments) { comment in
+                                CommentPlaceholder(comment: comment)
+                            }
+                        }
+                    }
                 
                 }
                 .padding()

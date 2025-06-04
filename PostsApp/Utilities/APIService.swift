@@ -31,6 +31,9 @@ struct APIService {
     
     //for comments
     func fetchComments(postID: Int) async throws -> [Comment] {
+        
+        //same story here
+        
         #if DEBUG
         try? await Task.sleep(for: .seconds(1.0))
         #endif
@@ -41,4 +44,19 @@ struct APIService {
         let (data, _) = try await URLSession.shared.data(from: url)
         return try JSONDecoder().decode([Comment].self, from: data)
     }
+    
+    func createPost(title: String, body: String, userId: Int = 1) async throws -> Post {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        struct NewPost: Codable { let title: String; let body: String; let userId: Int }
+        request.httpBody = try JSONEncoder().encode(NewPost(title: title, body: body, userId: userId))
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return try JSONDecoder().decode(Post.self, from: data)
+    }
+    
 }

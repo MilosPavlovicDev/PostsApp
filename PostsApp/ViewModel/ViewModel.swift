@@ -20,8 +20,11 @@ final class ViewModel: ObservableObject {
     @Published var isLoadingComments = false
     @Published var commentsError: String?
     
+    //MARK: - Create Post
+    @Published var isSubmittingPost = false
+    @Published var submitError: String?
+    
     func loadPosts() async {
-        
         isLoadingPosts = true
         postsError = nil
         
@@ -45,5 +48,29 @@ final class ViewModel: ObservableObject {
         }
         isLoadingComments = false
     }
+    
+   
+    func createPost(title: String, body: String) async -> Bool {
+            isSubmittingPost = true
+            submitError = nil
+            do {
+                let serverPost = try await APIService.shared.createPost(title: title, body: body)
+                // Generate a unique local ID
+                let nextID = (posts.map(\.id).max() ?? 0) + 1
+                // Make a brand-new Post with that ID
+                let localPost = Post(id: nextID,
+                                     userId: serverPost.userId,
+                                     title: serverPost.title,
+                                     body: serverPost.body)
+                // Insert at the top of the list
+                posts.insert(localPost, at: 0)
+                isSubmittingPost = false
+                return true
+            } catch {
+                submitError = error.localizedDescription
+                isSubmittingPost = false
+                return false
+            }
+        }
     
 }

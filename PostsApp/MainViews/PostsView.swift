@@ -10,6 +10,7 @@ import SwiftUI
 struct PostsView: View {
     
     @State private var openCreatePostView = false
+    @State private var showAboutView = false
     @StateObject private var vm = ViewModel()
     
     var body: some View {
@@ -19,9 +20,9 @@ struct PostsView: View {
                     postList
                 }
                 .padding(.top, 20)
-                .padding(.horizontal)
                 .padding(.bottom, 100)
             }
+            .navigationDestination(isPresented: $showAboutView) { AboutView() }
             .overlay(createPostButton, alignment: .bottom)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -32,7 +33,7 @@ struct PostsView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        // About action
+                        showAboutView = true
                     } label: {
                         VStack(spacing: 2) {
                             Image(systemName: "info.circle")
@@ -47,8 +48,9 @@ struct PostsView: View {
             }
             .task { if vm.posts.isEmpty { await vm.loadPosts() } }
         }
+        
         .fullScreenCover(isPresented: $openCreatePostView) {
-            CreatePostView()
+            CreatePostView(vm: vm, isPresented: $openCreatePostView)
         }
     }
     
