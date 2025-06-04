@@ -71,9 +71,9 @@ struct PostsView: View {
     
     @ViewBuilder
     private var postList: some View {
-        if vm.isLoading {
+        if vm.isLoadingPosts {
             skeletonRows
-        } else if let message = vm.error {
+        } else if let message = vm.postsError {
             errorView(message)
         } else {
             postRows
@@ -99,7 +99,7 @@ struct PostsView: View {
     private var postRows: some View {
         ForEach(vm.posts) { post in
             NavigationLink {
-                DetailPostView(post: post)          // TODO
+                DetailPostView(post: post, vm: vm)
             } label: {
                     PostPlaceholder(post: post)
             }

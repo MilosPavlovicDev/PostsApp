@@ -10,20 +10,40 @@ import SwiftUI
 
 @MainActor
 final class ViewModel: ObservableObject {
+    //MARK: - Posts
     @Published var posts: [Post] = []
-    @Published var isLoading = true
-    @Published var error: String?
+    @Published var isLoadingPosts = false
+    @Published var postsError: String?
 
+    //MARK: - Comments
+    @Published var comments: [Comment] = []
+    @Published var isLoadingComments = false
+    @Published var commentsError: String?
+    
     func loadPosts() async {
         
-        isLoading = true
-        error = nil
+        isLoadingPosts = true
+        postsError = nil
         
         do {
             posts = try await APIService.shared.fetchPosts()
         } catch {
-            self.error = error.localizedDescription
+            self.postsError = error.localizedDescription
         }
-        isLoading = false
+        isLoadingPosts = false
     }
+    
+    func loadComments(for postID: Int) async {
+        isLoadingComments = true
+        commentsError = nil
+        
+        do {
+            let all = try await APIService.shared.fetchComments(postID: postID)
+            comments = Array(all.prefix(3))
+        } catch {
+            self.commentsError = error.localizedDescription
+        }
+        isLoadingComments = false
+    }
+    
 }
